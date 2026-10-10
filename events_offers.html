@@ -73,11 +73,33 @@
         text-align: left;
       }
 
+      /* This page has its own styles; only adapt its navigation. */
+      @media (max-width: 1024px) {
+        .event-navigation {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 4px 12px;
+        }
+
+        .event-navigation a {
+          display: inline-flex;
+          align-items: center;
+          min-height: 44px;
+          padding: 0 4px;
+          white-space: nowrap;
+        }
+
+        .event-navigation .nav-separator {
+          display: none;
+        }
+      }
+
     </style>
 
   </head>
   <body>
-    <nav><a href="index.html">Home</a> · <a href="pages/offers.html">Offers</a> · <a href="pages/about.html">About Us</a> · <a href="pages/contact.html">Contact</a></nav>
+    <nav class="event-navigation" aria-label="Main navigation"><a href="index.html">Home</a> <span class="nav-separator" aria-hidden="true">·</span> <a href="pages/offers.html">Offers</a> <span class="nav-separator" aria-hidden="true">·</span> <a href="pages/about.html">About Us</a> <span class="nav-separator" aria-hidden="true">·</span> <a href="pages/contact.html">Contact</a></nav>
     <!-- Page Heading -->
     <div class="page-heading">
     <p class="page-heading-text">Car Meet on 26th November</p>
