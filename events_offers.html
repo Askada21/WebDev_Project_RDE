@@ -28,23 +28,30 @@
       }
 
       .page-heading {
-        height: 450px;
+        min-height: 450px;
         margin-top: 0px;
         text-align: center;
         background-image: url(https://wallpapercave.com/wp/wp12363799.jpg);
         background-size: cover;
         background-position: center;
+        box-sizing: border-box;
+        padding: 20px;
       }
 
       .page-heading-text {
-        font-size: 50px;
+        font-size: clamp(1.75rem, 5vw, 3.125rem);
         font-weight: bold;
         color: white;
         -webkit-text-stroke: 2px black;
+        line-height: 1.2;
+        overflow-wrap: anywhere;
+        margin: 0;
       }
 
       .event-info {
         text-align: center;
+        padding: 20px;
+        overflow-wrap: anywhere;
       }
 
       .event-info-text {
@@ -53,24 +60,49 @@
       }
 
       .event-description-offer {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 1060px;
+        margin: 20px auto 0;
+        padding: 0 20px;
         text-align: center;
-        margin-top: 20px;
       }
 
-      .description-offer{
-        display: inline-block;
-        width: 500px;
-        height: 200px;
+      .description-offer {
         border-radius: 12px;
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.6);
-        vertical-align: top;
-        margin-right: 15px;
-        padding-left: 12px;
-        padding-right: 12px;
+        min-width: 0;
+        box-sizing: border-box;
+        padding: 16px 12px;
+        overflow-wrap: anywhere;
       }
 
       .description-offer-text {
         text-align: left;
+        margin: 0;
+        line-height: 1.5;
+      }
+
+      /* Two event cards share a row when there is enough room. */
+      @media (min-width: 768px) {
+        .event-description-offer {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      .description-offer h2 {
+        margin: 0 0 12px;
+      }
+
+      .page-heading button,
+      .event-info button {
+        box-sizing: border-box;
+        max-width: 100%;
+        white-space: normal;
+        overflow-wrap: anywhere;
       }
 
       /* This page has its own styles; only adapt its navigation. */
