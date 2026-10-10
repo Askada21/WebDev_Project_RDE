@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
     <head>
         <meta charset="utf-8" />
@@ -13,7 +13,7 @@
 
     <body>
       <header class="navbar">
-      <div class="logo">RDE Team</div>
+      <a class="logo" href="../index.html">RDE Team</a>
       <nav>
         <a href="../pages/offers.html" class="offers-btn">Offers</a>
         <a href="../pages/about.html" class="aboutus-btn">About Us</a>
@@ -27,47 +27,55 @@
         </div>
         
         <div class="contact-form">
-          <form id="ContactForm" onsubmit="return validateForm()">
+          <p id="contact-note">Demo form: your details are checked in this browser only. No message is sent or saved.</p>
+          <noscript><p>Enable JavaScript to check this form.</p></noscript>
+          <form id="ContactForm" aria-describedby="contact-note">
             <div class="form-group">
               <label for="fname">First Name:</label><br>
-              <input type="text" id="fname" name="fname" required><br><br>
+              <input type="text" id="fname" aria-describedby="fname-error" name="fname" required>
+              <span class="field-error" id="fname-error"></span><br><br>
               
               <label for="lname">Last Name:</label><br>
-              <input type="text" id="lname" name="lname" required><br><br>
+              <input type="text" id="lname" aria-describedby="lname-error" name="lname" required>
+              <span class="field-error" id="lname-error"></span><br><br>
               
               <label for="email">Email Address:</label><br>
-              <input type="email" id="email" name="email" required><br><br>
+              <input type="email" id="email" aria-describedby="email-error" name="email" required>
+              <span class="field-error" id="email-error"></span><br><br>
 
-              <label for="query type">Reason for Inquiry:</label></div>
-              <select id="query-type" required>
+              <label for="query-type">Reason for Inquiry:</label>
+              <select id="query-type" aria-describedby="query-type-error" name="query-type" required>
                 <option value="" disabled selected>Select an Option</option>
                 <option value="general">General</option>
                 <option value="feedback">Feedback</option>
                 <option value="technical-support">Technical Support</option>
-              </select><br><br>
+              </select>
+              <span class="field-error" id="query-type-error"></span><br><br>
               
               <label for="message">Enter Your Query:</label><br>
-              <textarea id="message" name="message" rows="5" cols="33" required></textarea><br><br>
+              <textarea id="message" aria-describedby="message-error" name="message" rows="5" cols="33" required></textarea>
+              <span class="field-error" id="message-error"></span><br><br>
             </div>
             
             <div class="form-button">
-              <button type="submit" class="submit-btn" onclick="submitForm()">Submit</button>
+              <button type="submit" class="submit-btn" disabled>Check details</button>
             </div>
             
+            <p id="contact-status" role="status" aria-live="polite"></p>
           </form>
         </div>
         
       </div>
       <section class="nav-back-home-btn">
-    <nav><a href="../index.html" class="back-home-btn">Go Back</a></nav></section>
+    <nav><a href="../index.html" class="back-home-btn">Back to Home</a></nav></section>
 
     <footer>
     <p>© 2025 Wheels on Fire. All rights reserved.</p>
     <div class="socials">
-      <a href="#">Instagram</a>
-      <a href="#">Facebook</a>
-      <a href="#">LinkedIn</a>
-      <a href="#">YouTube</a>
+      <span title="Link not available">Instagram</span>
+      <span title="Link not available">Facebook</span>
+      <span title="Link not available">LinkedIn</span>
+      <span title="Link not available">YouTube</span>
     </div>
     </footer>
       <script src="../script/main.js"></script>

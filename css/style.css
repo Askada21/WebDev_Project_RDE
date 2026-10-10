@@ -15,6 +15,8 @@ body {
 
 .logo {
   font-weight: bold;
+  color: inherit;
+  text-decoration: none;
     
 }
 
@@ -100,6 +102,9 @@ body {
 
 /* Button in the hero section */
 .primary-btn {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 15px;
   background-color: blue;
   color: white;
   border: none;
@@ -250,10 +255,25 @@ footer {
 }
 
 /* Social links */
-footer .socials a {
+footer .socials a,
+footer .socials span {
   color: #bbb;
   text-decoration: none; /*removes the default underline from links, making them look cleaner*/
   margin: 0 10px; /*adds horizontal space of 10px on the left and right of each link*/
+}
+
+/* Keep the collection anchor below the existing sticky navigation. */
+#collection {
+  scroll-margin-top: 160px;
+}
+
+.field-error {
+  display: block;
+  color: #a40000;
+}
+
+[aria-invalid="true"] {
+  border-color: #a40000;
 }
 
 footer .socials a:hover {
