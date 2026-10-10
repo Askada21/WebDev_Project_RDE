@@ -133,6 +133,13 @@ body {
   margin-top: 10px;
 }
 
+/* Keep collection controls within the available width. */
+#car-filters > select,
+#car-filters > button {
+  min-width: 0;
+  max-width: 100%;
+}
+
 /* Style for dropdowns and button */
 select, .search-btn {
   padding: 10px; /*adds space inside the element (between text and the border).This makes buttons and dropdowns look bigger and easier to click*/
@@ -215,6 +222,7 @@ select, .search-btn {
 
 /* Each car card box */
 .car-card {
+  min-width: 0; /* Allow cards to shrink inside their grid tracks. */
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /*adds a soft shadow under the card
@@ -227,12 +235,19 @@ select, .search-btn {
 
 /* Car image */
 .car-card img {
+  display: block; /* Remove the inline-image baseline gap. */
   width: 100%; /*the image will stretch to fill the entire width of its parent container (.car-card). This ensures the image aligns perfectly with the card edges*/
   height: 180px;
   object-fit: cover; /*the image fills the container without distortion*/
 }
 
 /* Car name and info */
+.car-card h3,
+.car-card p {
+  padding-inline: 12px;
+  overflow-wrap: anywhere;
+}
+
 .car-card h3 {
   margin: 10px 0 5px; /*10px → top margin: space above the car name.
     0 → right and left margins: no extra horizontal space.
@@ -565,6 +580,7 @@ button:hover {
   .filters {
     flex-direction: column;
     width: 100%;
+    align-items: center;
   }
 
   select,
@@ -573,9 +589,22 @@ button:hover {
     max-width: 300px;
   }
 
+  #car-filters > select,
+  #car-filters > button {
+    max-width: 300px;
+  }
+
+  #car-filters > button {
+    margin-top: 0; /* The form's gap provides consistent spacing. */
+  }
+
+  #car-filters > button:hover {
+    transform: none; /* Avoid enlarging full-width buttons beyond the screen. */
+  }
+
   /* Car grid becomes 1 column */
   .car-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   /* Brands grid tighter */
@@ -627,7 +656,7 @@ button:hover {
 
   /* Car grid = 2 columns */
   .car-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   /* Brands grid moderate size */
