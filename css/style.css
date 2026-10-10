@@ -436,6 +436,55 @@ textarea {
   transform: translateY(-2px);
 }
 
+/* Contact layout on phones and tablets; retain the desktop form styles. */
+@media (max-width: 1024px) {
+  .contact-container {
+    width: calc(100% - 40px);
+    overflow-wrap: anywhere;
+  }
+
+  #ContactForm > * {
+    min-width: 0;
+  }
+
+  #ContactForm input,
+  #ContactForm select,
+  #ContactForm textarea,
+  #ContactForm button {
+    min-width: 0;
+    max-width: 100%;
+    min-height: 44px;
+  }
+
+  #ContactForm select {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  /* Replace the existing line-break spacing without changing the markup. */
+  #ContactForm br {
+    display: none;
+  }
+
+  #ContactForm label:not(:first-child) {
+    margin-top: 20px;
+  }
+
+  .contact-container #contact-note {
+    margin-bottom: 20px;
+  }
+
+  #ContactForm .field-error,
+  .contact-container #contact-note,
+  #ContactForm #contact-status {
+    line-height: 1.5;
+  }
+
+  #ContactForm #contact-status:not(:empty) {
+    margin-top: 16px;
+  }
+}
+
 /* OFFERS SECTION */
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -630,7 +679,11 @@ button:hover {
   /* Contact form width */
   .contact-container {
     padding: 20px;
-    margin: 20px;
+    margin: 20px auto;
+  }
+
+  #ContactForm button {
+    width: 100%;
   }
 }
 
