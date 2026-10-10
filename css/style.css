@@ -61,7 +61,8 @@ body {
 /* Big top section with background image */
 .hero {
   position: relative; /* easily move blocks */
-  height: 70vh;
+  min-height: 70vh; /* Keep the usual height, but grow if text needs more room. */
+  padding: 24px 15px;
   color: white;
   display: flex; /*enables flexbox layout, so child elements can be easily centered horizontally and vertically*/
   justify-content: center; /*in flexbox, this centers items horizontally*/
@@ -85,7 +86,21 @@ body {
 /* Text that goes on top of the image */
 .hero-text {
   position: relative;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
   z-index: 2; /*puts the text on top of the darkening*/
+}
+
+.hero .primary-btn {
+  max-width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .hero .primary-btn {
+    min-height: 44px;
+    padding-block: 12px;
+  }
 }
 
 /* Dark shade over the background image */
@@ -617,8 +632,7 @@ button:hover {
 
   /* Hero */
   .hero {
-    height: 55vh;
-    padding: 15px;
+    min-height: 55vh;
   }
 
   .hero-text h1 {
@@ -696,7 +710,7 @@ button:hover {
 
   /* Hero */
   .hero {
-    height: 65vh;
+    min-height: 65vh;
   }
   .hero-text h1 {
     font-size: 2rem;
