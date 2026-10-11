@@ -33,25 +33,38 @@
   <section class="search-section">
     <h2>Browse Through The Models I Own</h2>
     <form class="filters" id="car-filters">
-      <select id="car-make" name="make" aria-label="Car make" disabled>
-        <option value="">Any make</option>
-      </select>
-      <select id="car-model" name="model" aria-label="Car model" disabled>
-        <option value="">Any model</option>
-      </select>
-      <select aria-label="Location unavailable: car locations have not been provided" disabled>
-        <option>Location unavailable</option>
-      </select>
-      <select id="car-price" name="price" aria-label="Price range" disabled>
-        <option value="">Any price</option>
-        <option value="0-20000">€0 - €20,000</option>
-        <option value="20001-40000">€20,001 - €40,000</option>
-        <option value="40001-60000">€40,001 - €60,000</option>
-        <option value="60001-120000">€60,001 - €120,000</option>
-      </select>
+      <div class="filter-field">
+        <label for="car-make">Car make</label>
+        <select id="car-make" name="make" disabled>
+          <option value="">Any make</option>
+        </select>
+      </div>
+      <div class="filter-field">
+        <label for="car-model">Car model</label>
+        <select id="car-model" name="model" disabled>
+          <option value="">Any model</option>
+        </select>
+      </div>
+      <div class="filter-field">
+        <label for="car-location">Location</label>
+        <select id="car-location" name="location" aria-describedby="location-note" disabled>
+          <option>Location unavailable</option>
+        </select>
+      </div>
+      <div class="filter-field">
+        <label for="car-price">Price range</label>
+        <select id="car-price" name="price" disabled>
+          <option value="">Any price</option>
+          <option value="0-20000">€0 - €20,000</option>
+          <option value="20001-40000">€20,001 - €40,000</option>
+          <option value="40001-60000">€40,001 - €60,000</option>
+          <option value="60001-120000">€60,001 - €120,000</option>
+        </select>
+      </div>
       <button type="submit" class="search-btn" disabled>Search Cars</button>
       <button type="reset" class="search-btn" disabled>Reset</button>
     </form>
+    <p id="location-note" class="filter-note">Location-based filtering is not available in this demo.</p>
     <noscript><p>Enable JavaScript to filter cars. The full collection is shown below.</p></noscript>
   </section>
 

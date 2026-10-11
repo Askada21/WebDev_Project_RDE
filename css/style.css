@@ -143,16 +143,35 @@ body {
 .filters {
   display: flex; /* puts them in a row */
   justify-content: center;
+  align-items: flex-end;
   flex-wrap: wrap; /* if the screen is narrow, elements will move to a new line*/
   gap: 10px;
   margin-top: 10px;
 }
 
 /* Keep collection controls within the available width. */
-#car-filters > select,
+#car-filters .filter-field,
+#car-filters select,
 #car-filters > button {
   min-width: 0;
   max-width: 100%;
+}
+
+.filter-field {
+  text-align: left;
+}
+
+.filter-field select {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+}
+
+.filter-note {
+  margin-top: 12px;
+  color: #555;
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 /* Style for dropdowns and button */
@@ -418,8 +437,8 @@ textarea {
   transition: all 0.3s;
 }
 
-textarea {
-  resize: none;
+#ContactForm textarea {
+  resize: vertical;
 }
 
 .form-button {
@@ -695,8 +714,9 @@ button:hover {
     max-width: 300px;
   }
 
-  #car-filters > select,
+  #car-filters .filter-field,
   #car-filters > button {
+    width: 100%;
     max-width: 300px;
   }
 

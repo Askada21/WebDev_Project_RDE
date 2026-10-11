@@ -35,15 +35,15 @@
           <form id="ContactForm" aria-describedby="contact-note">
             <div class="form-group">
               <label for="fname">First Name:</label><br>
-              <input type="text" id="fname" aria-describedby="fname-error" name="fname" required>
+              <input type="text" id="fname" aria-describedby="fname-error" name="fname" autocomplete="given-name" required>
               <span class="field-error" id="fname-error"></span><br><br>
               
               <label for="lname">Last Name:</label><br>
-              <input type="text" id="lname" aria-describedby="lname-error" name="lname" required>
+              <input type="text" id="lname" aria-describedby="lname-error" name="lname" autocomplete="family-name" required>
               <span class="field-error" id="lname-error"></span><br><br>
               
               <label for="email">Email Address:</label><br>
-              <input type="email" id="email" aria-describedby="email-error" name="email" required>
+              <input type="email" id="email" aria-describedby="email-error" name="email" autocomplete="email" required>
               <span class="field-error" id="email-error"></span><br><br>
 
               <label for="query-type">Reason for Inquiry:</label>
