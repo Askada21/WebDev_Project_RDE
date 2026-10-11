@@ -316,6 +316,12 @@ footer .socials span {
   scroll-margin-top: 160px;
 }
 
+/* Add breathing room to the root scroll padding that clears the sticky header. */
+.car-card,
+#car-results {
+  scroll-margin-top: 1rem;
+}
+
 .field-error {
   display: block;
   color: #a40000;

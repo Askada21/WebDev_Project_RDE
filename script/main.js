@@ -49,6 +49,12 @@ if (carFilters) {
   carFilters.addEventListener("submit", event => {
     event.preventDefault();
     filterCars();
+    const target = cards.find(card => !card.hidden) || results;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    target.scrollIntoView({
+      behavior: reducedMotion ? "instant" : "smooth",
+      block: "start"
+    });
   });
   carFilters.addEventListener("reset", event => {
     event.preventDefault();
