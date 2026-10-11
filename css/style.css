@@ -603,6 +603,18 @@ button:hover {
   margin: 0 0 12px;
 }
 
+.event-ticket-status {
+  display: inline-block;
+  background-color: blue;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 10px 0 0;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.event-ticket-status,
 .page-heading button,
 .event-info button {
   box-sizing: border-box;
