@@ -10,6 +10,23 @@
         font-family: Arial, Helvetica, sans-serif;
       }
 
+      /* Match keyboard focus styling on pages using the shared stylesheet. */
+      :is(a[href], button, input, select, textarea, [tabindex]):focus-visible {
+        outline: 3px solid #005fcc;
+        outline-offset: 3px;
+        box-shadow: 0 0 0 3px #fff;
+      }
+
+      html {
+        scroll-padding-block: 1rem;
+      }
+
+      @media (forced-colors: active) {
+        :is(a[href], button, input, select, textarea, [tabindex]):focus-visible {
+          outline-color: CanvasText;
+        }
+      }
+
       .event-ticket-status {
         display: inline-block;
         background-color: blue;

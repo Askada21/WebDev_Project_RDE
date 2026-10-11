@@ -418,14 +418,6 @@ textarea {
   transition: all 0.3s;
 }
 
-/* DOESNT WORK */
-input:focus, 
-textarea:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 6px rgba(0,123,255,0.3);
-  outline: none;
-}
-
 textarea {
   resize: none;
 }
@@ -435,7 +427,7 @@ textarea {
 }
 
 .submit-btn {
-  background: #007bff;
+  background: #005ce6;
   color: white;
   padding: 15px 30px;
   font-size: 16px;
@@ -446,9 +438,16 @@ textarea {
   transition: background 0.3s, transform 0.2s;
 }
 
-.submit-btn:hover {
-  background: #0056b3;
+.submit-btn:hover,
+.submit-btn:focus-visible {
+  background: #004bbd;
+  color: #fff;
   transform: translateY(-2px);
+}
+
+.submit-btn:active {
+  background: #003b95;
+  color: #fff;
 }
 
 /* Contact layout on phones and tablets; retain the desktop form styles. */
@@ -824,3 +823,36 @@ button:hover {
 
 
 
+/* Leave room for the sticky header when keyboard focus scrolls into view. */
+html {
+  scroll-padding-block: 10rem 1rem;
+}
+
+:is(a[href], button, input, select, textarea, [tabindex]) {
+  scroll-margin-block: 1rem;
+}
+
+/* White inner ring and blue outer outline work on light and dark surfaces.
+   Follow hover rules so decorative shadows cannot hide keyboard focus. */
+:is(a[href], button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid #005fcc;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px #fff;
+}
+
+/* A wrapped header must not cover controls on small or zoomed viewports. */
+@media (max-width: 600px), (max-height: 500px) {
+  .navbar {
+    position: static;
+  }
+
+  html {
+    scroll-padding-block: 1rem;
+  }
+}
+
+@media (forced-colors: active) {
+  :is(a[href], button, input, select, textarea, [tabindex]):focus-visible {
+    outline-color: CanvasText;
+  }
+}
