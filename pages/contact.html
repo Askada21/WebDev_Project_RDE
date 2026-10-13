@@ -1,25 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="../css/style.css">
-        <title>Contact</title>
-    </head>
+        <title>Contact Us | Wheels on Fire</title>
+      <link rel="icon" type="image/svg+xml" href="../media/favicon.svg">
+</head>
 
     <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
       <header class="navbar">
-      <div class="logo">RDE Team</div>
-      <nav>
+      <a class="logo" href="../index.html">RDE Team</a>
+      <nav aria-label="Main navigation">
         <a href="../pages/offers.html" class="offers-btn">Offers</a>
         <a href="../pages/about.html" class="aboutus-btn">About Us</a>
-        <a href="../pages/contact.html" class="contact-btn">Contact</a>
+        <a href="../pages/contact.html" class="contact-btn" aria-current="page">Contact</a>
       </nav>
       </header>
+
+  <main id="main-content" tabindex="-1">
       <div class="contact-container">
         <div class="contact-header">
           <h1>Contact Us</h1>
@@ -27,47 +28,57 @@
         </div>
         
         <div class="contact-form">
-          <form id="ContactForm" onsubmit="return validateForm()">
+          <p id="contact-note">Demo form: your details are checked in this browser only. No message is sent or saved.</p>
+          <noscript><p>Enable JavaScript to check this form.</p></noscript>
+          <form id="ContactForm" aria-describedby="contact-note">
             <div class="form-group">
-              <label for="fname">First Name:</label><br>
-              <input type="text" id="fname" name="fname" required><br><br>
+              <label for="fname">First Name:</label>
+              <input type="text" id="fname" aria-describedby="fname-error" name="fname" autocomplete="given-name" required>
+              <span class="field-error" id="fname-error"></span>
               
-              <label for="lname">Last Name:</label><br>
-              <input type="text" id="lname" name="lname" required><br><br>
+              <label for="lname">Last Name:</label>
+              <input type="text" id="lname" aria-describedby="lname-error" name="lname" autocomplete="family-name" required>
+              <span class="field-error" id="lname-error"></span>
               
-              <label for="email">Email Address:</label><br>
-              <input type="email" id="email" name="email" required><br><br>
+              <label for="email">Email Address:</label>
+              <input type="email" id="email" aria-describedby="email-error" name="email" autocomplete="email" required>
+              <span class="field-error" id="email-error"></span>
 
-              <label for="query type">Reason for Inquiry:</label></div>
-              <select id="query-type" required>
+              <label for="query-type">Reason for Inquiry:</label>
+              <select id="query-type" aria-describedby="query-type-error" name="query-type" required>
                 <option value="" disabled selected>Select an Option</option>
                 <option value="general">General</option>
                 <option value="feedback">Feedback</option>
                 <option value="technical-support">Technical Support</option>
-              </select><br><br>
+              </select>
+              <span class="field-error" id="query-type-error"></span>
               
-              <label for="message">Enter Your Query:</label><br>
-              <textarea id="message" name="message" rows="5" cols="33" required></textarea><br><br>
+              <label for="message">Enter Your Query:</label>
+              <textarea id="message" aria-describedby="message-error" name="message" rows="5" cols="33" required></textarea>
+              <span class="field-error" id="message-error"></span>
             </div>
             
             <div class="form-button">
-              <button type="submit" class="submit-btn" onclick="submitForm()">Submit</button>
+              <button type="submit" class="submit-btn" disabled>Check details</button>
             </div>
             
+            <p id="contact-status" role="status" aria-live="polite"></p>
           </form>
         </div>
         
       </div>
       <section class="nav-back-home-btn">
-    <nav><a href="../index.html" class="back-home-btn">Go Back</a></nav></section>
+    <nav aria-label="Return navigation"><a href="../index.html" class="back-home-btn">Back to Home</a></nav></section>
 
-    <footer>
+    </main>
+
+  <footer>
     <p>© 2025 Wheels on Fire. All rights reserved.</p>
     <div class="socials">
-      <a href="#">Instagram</a>
-      <a href="#">Facebook</a>
-      <a href="#">LinkedIn</a>
-      <a href="#">YouTube</a>
+      <span title="Link not available">Instagram</span>
+      <span title="Link not available">Facebook</span>
+      <span title="Link not available">LinkedIn</span>
+      <span title="Link not available">YouTube</span>
     </div>
     </footer>
       <script src="../script/main.js"></script>

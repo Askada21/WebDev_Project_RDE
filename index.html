@@ -3,105 +3,113 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wheels On Fire</title>
+  <title>Car Collection | Wheels on Fire</title>
   <link rel="stylesheet" href="css/style.css"/>
+  <link rel="icon" type="image/svg+xml" href="media/favicon.svg">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="navbar">
-    <div class="logo">RDE Team</div>
-    <nav>
+    <a class="logo" href="index.html" aria-current="page">RDE Team</a>
+    <nav aria-label="Main navigation">
       <a href="pages/offers.html" class="offers-btn">Offers</a>
       <a href="pages/about.html" class="aboutus-btn">About Us</a>
       <a href="pages/contact.html" class="contact-btn">Contact</a>
     </nav>
   </header>
 
+  <main id="main-content" tabindex="-1">
+
   <section class="hero">
     <video class="hero-video" autoplay muted loop playsinline>
-        <source src="./media/8533902-uhd_3840_2160_30fps.mp4" type="video/mp4">
+        <source src="media/hero-short.mp4" type="video/mp4">
     </video>
     <div class="hero-text">
-      <h1>Wheels on fire</h1>
-      <button class="primary-btn">View my collection</button>
+      <h1>Wheels on Fire</h1>
+      <a class="primary-btn" href="#collection">View my collection</a>
     </div>
     <div class="hero-overlay"></div>
   </section>
 
   <section class="search-section">
-    <h2>Browse Through The Models I Own</h2>
-    <div class="filters">
-      <select>
-        <option>Any make</option>
-        <option value="audi">Audi</option>
-        <option value="bmw">BMW</option>
-        <option value="jaguar">Jaguar</option>
-        <option value="ferrari">Ferrari</option>
-        <option value="lexus">Lexus</option></select>
-
-      <select><option>Any model</option>
-        <option value="audiA4">Audi A4</option>
-        <option value="audiQ7">Audi Q7</option>
-        <option value="bmw3">BMW 3 Series</option>
-        <option value="bmw5">BMW X5</option>
-        <option value="fer8">Ferrari F8 Tributo</option>
-        <option value="fer488">Ferrari 488 Pista</option>
-        <option value="jagFT">Jaguar F-Type</option>
-        <option value="jagIP">Jaguar I-PACE</option>
-        <option value="lexR">Lexus RX</option>
-        <option value="lexL">Lexus LS</option></select>
-
-      <select><option>Location</option>
-        <option value="dublin">Dublin</option>
-        <option value="cork">Cork</option>
-        <option value="galway">Galway</option></select>
-
-      <select><option>Any price</option>
-        <option value="0-20000">€0 - €20,000</option>
-        <option value="20001-40000">€20,001 - €40,000</option>
-        <option value="40001-60000">€40,001 - €60,000</option>
-        <option value="40001-60000">€60,001 - €120,000</option></select>
-
-      <button class="search-btn">Search Cars</button>
-    </div>
+    <h2>Browse My Car Collection</h2>
+    <form class="filters" id="car-filters">
+      <div class="filter-field">
+        <label for="car-make">Car make</label>
+        <select id="car-make" name="make" disabled>
+          <option value="">Any make</option>
+        </select>
+      </div>
+      <div class="filter-field">
+        <label for="car-model">Car model</label>
+        <select id="car-model" name="model" disabled>
+          <option value="">Any model</option>
+        </select>
+      </div>
+      <div class="filter-field">
+        <label for="car-location">Location</label>
+        <select id="car-location" name="location" aria-describedby="location-note" disabled>
+          <option>Location unavailable</option>
+        </select>
+      </div>
+      <div class="filter-field">
+        <label for="car-price">Price range</label>
+        <select id="car-price" name="price" disabled>
+          <option value="">Any price</option>
+          <option value="0-20000">€0 - €20,000</option>
+          <option value="20001-40000">€20,001 - €40,000</option>
+          <option value="40001-60000">€40,001 - €60,000</option>
+          <option value="60001-120000">€60,001 - €120,000</option>
+        </select>
+      </div>
+      <button type="submit" class="search-btn" disabled>Search Cars</button>
+      <button type="reset" class="search-btn" disabled>Reset</button>
+    </form>
+    <p id="location-note" class="filter-note">Location-based filtering is not available in this demo.</p>
+    <noscript><p>Enable JavaScript to filter cars. The full collection is shown below.</p></noscript>
   </section>
 
   <section class="brands">
-    <div class="brand"><img src="media/audi-7.svg" alt="Audi"></div>
-    <div class="brand"><img src="media/BMW.svg.png" alt="BMW"></div>
-    <div class="brand"><img src="media/jaguar-cars.svg" alt="Jaguar"></div>
-    <div class="brand"><img src="media/ferrari-4.svg" alt="Ferrari"></div>
-    <div class="brand"><img src="media/lexus.svg" alt="Lexus"></div>
+    <div class="brand"><img src="media/audi-7.svg" width="2500" height="2500" loading="lazy" alt="Audi"></div>
+    <div class="brand"><img src="media/BMW.svg.png" width="330" height="330" loading="lazy" alt="BMW"></div>
+    <div class="brand"><img src="media/jaguar-cars.svg" width="2500" height="1276" loading="lazy" alt="Jaguar"></div>
+    <div class="brand"><img src="media/ferrari-4.svg" width="1417" height="2500" loading="lazy" alt="Ferrari"></div>
+    <div class="brand"><img src="media/lexus.svg" width="2500" height="2500" loading="lazy" alt="Lexus"></div>
   </section>
 
-  <section class="cars">
-    <h2>Few of My Collection</h2>
+  <section class="cars" id="collection">
+    <h2>Highlights from My Collection</h2>
+    <p id="car-results" role="status" aria-live="polite"></p>
     <div class="car-grid">
-      <div class="car-card">
-        <img src="media/mazda.svg" alt="Mazda CX-5">
+      <div class="car-card" data-make="Mazda" data-model="CX-5" data-price="28900">
+        <img src="media/mazda.jpg" width="1500" height="1000" loading="lazy" alt="Mazda CX-5">
         <h3>Mazda CX-5</h3>
         <p>2022 • Petrol • €28,900</p>
       </div>
-      <div class="car-card">
-        <img src="media/land copy.svg" alt="Land Rover Defender">
+      <div class="car-card" data-make="Land Rover" data-model="Defender" data-price="64500">
+        <img src="media/land-rover.jpg" width="2667" height="2000" loading="lazy" alt="Land Rover Defender">
         <h3>Land Rover Defender</h3>
         <p>2021 • Diesel • €64,500</p>
       </div>
-      <div class="car-card">
-        <img src="media/kia.svg" alt="Kia Sportage">
+      <div class="car-card" data-make="Kia" data-model="Sportage" data-price="36000">
+        <img src="media/kia.jpg" width="2070" height="1154" loading="lazy" alt="Kia Sportage">
         <h3>Kia Sportage</h3>
         <p>2023 • Hybrid • €36,000</p>
       </div>
     </div>
   </section>
 
+  </main>
+
   <footer>
     <p>© 2025 Wheels on Fire. All rights reserved.</p>
     <div class="socials">
-      <a href="#">Instagram</a>
-      <a href="#">Facebook</a>
-      <a href="#">LinkedIn</a>
-      <a href="#">YouTube</a>
+      <span title="Link not available">Instagram</span>
+      <span title="Link not available">Facebook</span>
+      <span title="Link not available">LinkedIn</span>
+      <span title="Link not available">YouTube</span>
     </div>
   </footer>
+  <script src="script/main.js"></script>
 </body>
 </html>

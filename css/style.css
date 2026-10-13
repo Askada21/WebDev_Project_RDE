@@ -8,13 +8,22 @@
 
 /* Main page style */
 body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
   background-color: white;
   color: #222;
-  
+}
+
+body > main {
+  flex: 1;
 }
 
 .logo {
   font-weight: bold;
+  color: inherit;
+  text-decoration: none;
     
 }
 
@@ -59,7 +68,8 @@ body {
 /* Big top section with background image */
 .hero {
   position: relative; /* easily move blocks */
-  height: 70vh;
+  min-height: 70vh; /* Keep the usual height, but grow if text needs more room. */
+  padding: 24px 15px;
   color: white;
   display: flex; /*enables flexbox layout, so child elements can be easily centered horizontally and vertically*/
   justify-content: center; /*in flexbox, this centers items horizontally*/
@@ -83,7 +93,21 @@ body {
 /* Text that goes on top of the image */
 .hero-text {
   position: relative;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
   z-index: 2; /*puts the text on top of the darkening*/
+}
+
+.hero .primary-btn {
+  max-width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .hero .primary-btn {
+    min-height: 44px;
+    padding-block: 12px;
+  }
 }
 
 /* Dark shade over the background image */
@@ -100,6 +124,9 @@ body {
 
 /* Button in the hero section */
 .primary-btn {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 15px;
   background-color: blue;
   color: white;
   border: none;
@@ -123,15 +150,41 @@ body {
 .filters {
   display: flex; /* puts them in a row */
   justify-content: center;
+  align-items: flex-end;
   flex-wrap: wrap; /* if the screen is narrow, elements will move to a new line*/
   gap: 10px;
   margin-top: 10px;
 }
 
+/* Keep collection controls within the available width. */
+#car-filters .filter-field,
+#car-filters select,
+#car-filters > button {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.filter-field {
+  text-align: left;
+}
+
+.filter-field select {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+}
+
+.filter-note {
+  margin-top: 12px;
+  color: #555;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
 /* Style for dropdowns and button */
 select, .search-btn {
   padding: 10px; /*adds space inside the element (between text and the border).This makes buttons and dropdowns look bigger and easier to click*/
-  border: 1px solid #ccc; /*draws a thin gray border around the element*/
+  border: 1px solid #767676; /* Matches contact fields with 4.54:1 contrast against white. */
   border-radius: 6px;
 }
 
@@ -175,6 +228,9 @@ select, .search-btn {
 
 /* Each logo */
 .brand img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
   max-height: 150px;
   max-width: 100px;
   opacity: 0.9; /*makes the image slightly transparent. This is a subtle visual effect to make it less “harsh” on the page*/
@@ -210,6 +266,10 @@ select, .search-btn {
 
 /* Each car card box */
 .car-card {
+  width: 100%;
+  max-width: 460px; /* Keep filtered results from becoming panoramic image strips. */
+  justify-self: center;
+  min-width: 0; /* Allow cards to shrink inside their grid tracks. */
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /*adds a soft shadow under the card
@@ -222,12 +282,19 @@ select, .search-btn {
 
 /* Car image */
 .car-card img {
+  display: block; /* Remove the inline-image baseline gap. */
   width: 100%; /*the image will stretch to fill the entire width of its parent container (.car-card). This ensures the image aligns perfectly with the card edges*/
   height: 180px;
   object-fit: cover; /*the image fills the container without distortion*/
 }
 
 /* Car name and info */
+.car-card h3,
+.car-card p {
+  padding-inline: 12px;
+  overflow-wrap: anywhere;
+}
+
 .car-card h3 {
   margin: 10px 0 5px; /*10px → top margin: space above the car name.
     0 → right and left margins: no extra horizontal space.
@@ -241,19 +308,49 @@ select, .search-btn {
 
 /* Footer (bottom of page) */
 footer {
+  flex-shrink: 0;
+  min-height: 98px;
   background-color: #111;
   color: white;
+  font-size: 16px;
+  line-height: 1.5;
   text-align: center;
   padding: 25px 10px;
   margin-top: 70px;
-  
+}
+
+footer .socials {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 20px;
 }
 
 /* Social links */
-footer .socials a {
+footer .socials a,
+footer .socials span {
   color: #bbb;
   text-decoration: none; /*removes the default underline from links, making them look cleaner*/
-  margin: 0 10px; /*adds horizontal space of 10px on the left and right of each link*/
+}
+
+/* Keep the collection anchor below the existing sticky navigation. */
+#collection {
+  scroll-margin-top: 160px;
+}
+
+/* Add breathing room to the root scroll padding that clears the sticky header. */
+.car-card,
+#car-results {
+  scroll-margin-top: 1rem;
+}
+
+.field-error {
+  display: block;
+  color: #a40000;
+}
+
+[aria-invalid="true"] {
+  border-color: #a40000;
 }
 
 footer .socials a:hover {
@@ -362,22 +459,14 @@ input,
 textarea {
   width: 100%;
   padding: 12px 15px;
-  border: 1px solid #ccc;
+  border: 1px solid #767676;
   border-radius: 8px;
   font-size: 16px;
   transition: all 0.3s;
 }
 
-/* DOESNT WORK */
-input:focus, 
-textarea:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 6px rgba(0,123,255,0.3);
-  outline: none;
-}
-
-textarea {
-  resize: none;
+#ContactForm textarea {
+  resize: vertical;
 }
 
 .form-button {
@@ -385,7 +474,7 @@ textarea {
 }
 
 .submit-btn {
-  background: #007bff;
+  background: #005ce6;
   color: white;
   padding: 15px 30px;
   font-size: 16px;
@@ -396,9 +485,62 @@ textarea {
   transition: background 0.3s, transform 0.2s;
 }
 
-.submit-btn:hover {
-  background: #0056b3;
+.submit-btn:hover,
+.submit-btn:focus-visible {
+  background: #004bbd;
+  color: #fff;
   transform: translateY(-2px);
+}
+
+.submit-btn:active {
+  background: #003b95;
+  color: #fff;
+}
+
+/* Consistent form spacing at every viewport size. */
+#ContactForm label:not(:first-child) {
+  margin-top: 20px;
+}
+
+.contact-container #contact-note {
+  margin-bottom: 20px;
+}
+
+#ContactForm .field-error,
+.contact-container #contact-note,
+#ContactForm #contact-status {
+  line-height: 1.5;
+}
+
+#ContactForm #contact-status:not(:empty) {
+  margin-top: 16px;
+}
+
+/* Contact layout on phones and tablets; retain the desktop form styles. */
+@media (max-width: 1024px) {
+  .contact-container {
+    width: calc(100% - 40px);
+    overflow-wrap: anywhere;
+  }
+
+  #ContactForm > * {
+    min-width: 0;
+  }
+
+  #ContactForm input,
+  #ContactForm select,
+  #ContactForm textarea,
+  #ContactForm button {
+    min-width: 0;
+    max-width: 100%;
+    min-height: 44px;
+  }
+
+  #ContactForm select {
+    width: 100%;
+    font-size: 16px;
+  }
+
 }
 
 /* OFFERS SECTION */
@@ -426,19 +568,24 @@ button:hover {
 }
 
 .page-heading {
-  height: 450px;
+  min-height: 450px;
   margin-top: 0px;
   text-align: center;
-  background-image: url(https://wallpapercave.com/wp/wp12363799.jpg);
+  background-image: url("../media/offers-background.jpg");
   background-size: cover;
   background-position: center;
+  box-sizing: border-box;
+  padding: 20px;
 }
 
 .page-heading-text {
-  font-size: 50px;
+  font-size: clamp(1.75rem, 5vw, 3.125rem);
   font-weight: bold;
   color: white;
   -webkit-text-stroke: 2px black;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+  margin: 0;
 }
 
 
@@ -450,6 +597,8 @@ button:hover {
 
 .event-info {
   text-align: center;
+  padding: 20px;
+  overflow-wrap: anywhere;
 }
 
 .event-info-text {
@@ -460,27 +609,93 @@ button:hover {
 }
 
 .event-description-offer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1060px;
+  margin: 20px auto 0;
+  padding: 0 20px;
   text-align: center;
-  margin-top: 20px;
 }
 
-.description-offer{
-  display: inline-block;
-  width: 500px;
-  height: 200px;
+.description-offer {
   border-radius: 12px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.6);
-  vertical-align: top;
-  margin-right: 15px;
-  padding-left: 12px;
-  padding-right: 12px;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 16px 12px;
+  overflow-wrap: anywhere;
 }
 
 .description-offer-text {
   text-align: left;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Two event cards share a row when there is enough room. */
+@media (min-width: 768px) {
+  .event-description-offer {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.description-offer h2 {
+  margin: 0 0 12px;
+}
+
+.event-ticket-status {
+  display: inline-block;
+  background-color: blue;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 10px 0 0;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.event-ticket-status,
+.page-heading button,
+.event-info button {
+  box-sizing: border-box;
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 /*  Responsive on different devices */
+/* Keep navigation visible and easy to tap on phones and tablets. */
+@media (max-width: 1024px) {
+  .navbar {
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+
+  .navbar nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    row-gap: 4px;
+    max-width: 100%;
+  }
+
+  .navbar .logo,
+  .navbar nav a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+  }
+
+  .navbar nav a {
+    white-space: nowrap;
+  }
+}
+
 /* Mobile devices (width < 600px) */
 @media (max-width: 600px) {
 
@@ -491,15 +706,20 @@ button:hover {
     padding: 15px;
   }
 
+  .navbar nav {
+    width: 100%;
+    justify-content: center;
+    gap: 4px 8px;
+  }
+
   .navbar nav a {
-    margin: 10px;
-    display: inline-block;
+    margin: 0;
+    padding: 8px 12px;
   }
 
   /* Hero */
   .hero {
-    height: 55vh;
-    padding: 15px;
+    min-height: 55vh;
   }
 
   .hero-text h1 {
@@ -510,6 +730,7 @@ button:hover {
   .filters {
     flex-direction: column;
     width: 100%;
+    align-items: center;
   }
 
   select,
@@ -518,9 +739,23 @@ button:hover {
     max-width: 300px;
   }
 
+  #car-filters .filter-field,
+  #car-filters > button {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  #car-filters > button {
+    margin-top: 0; /* The form's gap provides consistent spacing. */
+  }
+
+  #car-filters > button:hover {
+    transform: none; /* Avoid enlarging full-width buttons beyond the screen. */
+  }
+
   /* Car grid becomes 1 column */
   .car-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   /* Brands grid tighter */
@@ -546,7 +781,11 @@ button:hover {
   /* Contact form width */
   .contact-container {
     padding: 20px;
-    margin: 20px;
+    margin: 20px auto;
+  }
+
+  #ContactForm button {
+    width: 100%;
   }
 }
 
@@ -559,7 +798,7 @@ button:hover {
 
   /* Hero */
   .hero {
-    height: 65vh;
+    min-height: 65vh;
   }
   .hero-text h1 {
     font-size: 2rem;
@@ -572,7 +811,7 @@ button:hover {
 
   /* Car grid = 2 columns */
   .car-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   /* Brands grid moderate size */
@@ -629,3 +868,102 @@ button:hover {
 
 
 
+/* Leave room for the sticky header when keyboard focus scrolls into view. */
+html {
+  scroll-padding-block: 10rem 1rem;
+}
+
+:is(a[href], button, input, select, textarea, [tabindex]) {
+  scroll-margin-block: 1rem;
+}
+
+/* White inner ring and blue outer outline work on light and dark surfaces.
+   Follow hover rules so decorative shadows cannot hide keyboard focus. */
+:is(a[href], button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid #005fcc;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px #fff;
+}
+
+/* A wrapped header must not cover controls on small or zoomed viewports. */
+@media (max-width: 600px), (max-height: 500px) {
+  .navbar {
+    position: static;
+  }
+
+  html {
+    scroll-padding-block: 1rem;
+  }
+}
+
+@media (forced-colors: active) {
+  :is(a[href], button, input, select, textarea, [tabindex]):focus-visible {
+    outline-color: CanvasText;
+  }
+}
+
+/* Skip navigation stays out of the layout until keyboard focus reveals it. */
+.skip-link {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2000;
+  box-sizing: border-box;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  background: #005ce6;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.skip-link:focus {
+  width: auto;
+  height: auto;
+  max-width: calc(100% - 2rem);
+  padding: 12px 16px;
+  overflow: visible;
+  clip-path: none;
+  white-space: normal;
+}
+
+/* Contain child margins without changing their spacing. */
+#main-content {
+  display: flow-root;
+}
+
+/* Keep the full-width landmark's focus indicator inside the viewport. */
+#main-content:focus-visible {
+  outline-offset: -3px;
+  box-shadow: inset 0 0 0 6px #fff;
+}
+
+/* Underlining identifies the current page without relying on colour alone. */
+.navbar a[aria-current="page"] {
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
+
+/* Respect reduced motion for decorative effects; retain colours and focus rings. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+
+  .contact-btn:hover,
+  #car-filters > button:hover,
+  .brand:hover,
+  .brand img:hover,
+  .back-home-btn:hover,
+  .submit-btn:hover,
+  .submit-btn:focus-visible {
+    transform: none;
+  }
+}
