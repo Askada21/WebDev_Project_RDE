@@ -8,9 +8,16 @@
 
 /* Main page style */
 body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
   background-color: white;
   color: #222;
-  
+}
+
+body > main {
+  flex: 1;
 }
 
 .logo {
@@ -301,12 +308,22 @@ select, .search-btn {
 
 /* Footer (bottom of page) */
 footer {
+  flex-shrink: 0;
+  min-height: 98px;
   background-color: #111;
   color: white;
+  font-size: 16px;
+  line-height: 1.5;
   text-align: center;
   padding: 25px 10px;
   margin-top: 70px;
-  
+}
+
+footer .socials {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 20px;
 }
 
 /* Social links */
@@ -314,7 +331,6 @@ footer .socials a,
 footer .socials span {
   color: #bbb;
   text-decoration: none; /*removes the default underline from links, making them look cleaner*/
-  margin: 0 10px; /*adds horizontal space of 10px on the left and right of each link*/
 }
 
 /* Keep the collection anchor below the existing sticky navigation. */
