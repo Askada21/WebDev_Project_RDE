@@ -1,17 +1,42 @@
-# Wheels on Fire
+<h1 align="center">Wheels on Fire</h1>
+<p align="center">A car collection and community website by the RDE Team.</p>
 
-Wheels on Fire is a responsive, multi-page website for car enthusiasts. It presents John O’Reilly’s car collection, an About page, an archived community event, and a contact-form demonstration. Built by the RDE Team with HTML, CSS, and vanilla JavaScript, the project focuses on clear navigation, responsive layouts, and accessible browser interactions.
+<p align="center">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&amp;logo=html5&amp;logoColor=white" alt="HTML5">
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat" alt="CSS3">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&amp;logo=javascript&amp;logoColor=black" alt="JavaScript">
+</p>
+
+## Overview
+
+Wheels on Fire is a responsive, multi-page website showcasing John O’Reilly’s car collection, his story, and an archived community event. Built with HTML, CSS, and vanilla JavaScript, it includes interactive collection filters and a browser-only contact-form demo.
 
 ## Key features
 
-- **Car collection:** Three vehicle cards with photographs, model names, model years, fuel types, and prices, alongside a brand-logo gallery.
-- **Collection filters:** Search by make, model, and price range. Model options update with the selected make; results include a count, an empty-state message, and a reset action.
-- **Video introduction:** A muted, looping hero video with a link to the collection.
-- **About page:** Background information about the collector and the community behind the website.
-- **Events archive:** Details of the Dublin car meet dated 26 November 2025, clearly marked as a past event with a closed offer.
-- **Contact validation demo:** Required-field, whitespace, and email checks with field-specific errors and a validation status message.
-- **Shared page layout:** Consistent navigation and footers, with the footer reaching the viewport bottom on short pages and scrolling below content on longer pages.
-- **Legacy URL support:** `events_offers.html` redirects to the current Offers page and provides a fallback link.
+- **Browse and filter:** Explore three vehicle cards with photographs and specifications; filter by make, model, and price, with result counts and reset controls.
+- **Explore the story:** A muted, looping video introduces the collection, while the About page presents the collector’s background.
+- **View the event archive:** Read about the Dublin car meet on 26 November 2025, clearly marked as a past event with a closed offer.
+- **Try contact validation:** Required-field, whitespace, and email checks provide field-specific errors and a validation status message.
+- **Navigate across devices:** Shared navigation, responsive grids, keyboard focus indicators, and consistent footers support the four main pages.
+
+## Project Preview
+
+### Desktop View
+
+![Wheels on Fire Desktop](screenshots/home-desktop.png)
+
+### Mobile View
+
+<img src="screenshots/home-mobile.png" alt="Wheels on Fire mobile view" width="300">
+
+| Page | What to explore | Source |
+| --- | --- | --- |
+| Home | Video introduction, brand gallery, and car filters | [index.html](index.html) |
+| About | Collector biography and short-page footer layout | [about.html](pages/about.html) |
+| Contact | Form fields and validation feedback | [contact.html](pages/contact.html) |
+| Offers | Archived event details and closed offer | [offers.html](pages/offers.html) |
+
+*Planned screenshots: desktop collection, mobile filters, About footer, contact validation, and the event archive. No placeholder image files are linked.*
 
 ## Tech stack
 
@@ -29,40 +54,19 @@ The site has no framework, package dependencies, build step, backend, or databas
 
 ```text
 WebDev_Project_RDE/
-├── index.html                 # Home page and car collection
-├── events_offers.html         # Redirect to the Offers archive
+├── index.html           # Home page and collection
+├── events_offers.html   # Legacy redirect to the Offers archive
 ├── pages/
 │   ├── about.html
 │   ├── contact.html
 │   └── offers.html
-├── css/
-│   └── style.css              # Shared styles and responsive layouts
-├── script/
-│   └── main.js                # Car filters and contact validation
-├── media/
-│   ├── audi-7.svg
-│   ├── BMW.svg.png
-│   ├── favicon.svg
-│   ├── ferrari-4.svg
-│   ├── hero-short.mp4
-│   ├── jaguar-cars.svg
-│   ├── kia.jpg
-│   ├── kia.svg
-│   ├── land copy.svg
-│   ├── land-rover.jpg
-│   ├── land.svg
-│   ├── lexus.svg
-│   ├── mazda.jpg
-│   ├── mazda.svg
-│   └── offers-background.jpg
-├── 2ndEmail.docx
-├── 3rdEmail.docx
-├── CA5_email.docx
-├── Email to client .docx
+├── css/style.css        # Shared and responsive styles
+├── script/main.js       # Filters and contact validation
+├── media/               # Photos, logos, favicon, and hero video
 └── README.md
 ```
 
-The Word documents are supporting project documents, not website runtime files. Some SVG assets are retained in the media folder without being referenced by the current pages.
+Four supporting Word documents also sit at the repository root; they are omitted from this website-focused tree. Some SVG assets in `media/` are retained but unused by the current pages.
 
 ## Getting started
 
@@ -117,18 +121,6 @@ Before submitting changes, check for whitespace errors:
 ```sh
 git diff --check
 ```
-
-## Screenshots
-
-No website screenshots are currently committed to this repository. The following are placeholders for future captures; the files in `media/` are site assets rather than page screenshots.
-
-| Planned screenshot | Status |
-| --- | --- |
-| Desktop home page and collection at 1440px | To be added |
-| Mobile collection and filters at 375px | To be added |
-| About page footer at 768px | To be added |
-| Contact form with validation feedback | To be added |
-| Archived event page | To be added |
 
 ## Team collaboration and contributions
 
