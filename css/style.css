@@ -177,7 +177,7 @@ body {
 /* Style for dropdowns and button */
 select, .search-btn {
   padding: 10px; /*adds space inside the element (between text and the border).This makes buttons and dropdowns look bigger and easier to click*/
-  border: 1px solid #ccc; /*draws a thin gray border around the element*/
+  border: 1px solid #767676; /* Matches contact fields with 4.54:1 contrast against white. */
   border-radius: 6px;
 }
 
@@ -259,6 +259,9 @@ select, .search-btn {
 
 /* Each car card box */
 .car-card {
+  width: 100%;
+  max-width: 460px; /* Keep filtered results from becoming panoramic image strips. */
+  justify-self: center;
   min-width: 0; /* Allow cards to shrink inside their grid tracks. */
   background-color: white;
   border-radius: 10px;
@@ -440,7 +443,7 @@ input,
 textarea {
   width: 100%;
   padding: 12px 15px;
-  border: 1px solid #ccc;
+  border: 1px solid #767676;
   border-radius: 8px;
   font-size: 16px;
   transition: all 0.3s;
@@ -478,6 +481,25 @@ textarea {
   color: #fff;
 }
 
+/* Consistent form spacing at every viewport size. */
+#ContactForm label:not(:first-child) {
+  margin-top: 20px;
+}
+
+.contact-container #contact-note {
+  margin-bottom: 20px;
+}
+
+#ContactForm .field-error,
+.contact-container #contact-note,
+#ContactForm #contact-status {
+  line-height: 1.5;
+}
+
+#ContactForm #contact-status:not(:empty) {
+  margin-top: 16px;
+}
+
 /* Contact layout on phones and tablets; retain the desktop form styles. */
 @media (max-width: 1024px) {
   .contact-container {
@@ -503,28 +525,6 @@ textarea {
     font-size: 16px;
   }
 
-  /* Replace the existing line-break spacing without changing the markup. */
-  #ContactForm br {
-    display: none;
-  }
-
-  #ContactForm label:not(:first-child) {
-    margin-top: 20px;
-  }
-
-  .contact-container #contact-note {
-    margin-bottom: 20px;
-  }
-
-  #ContactForm .field-error,
-  .contact-container #contact-note,
-  #ContactForm #contact-status {
-    line-height: 1.5;
-  }
-
-  #ContactForm #contact-status:not(:empty) {
-    margin-top: 16px;
-  }
 }
 
 /* OFFERS SECTION */
@@ -931,4 +931,23 @@ html {
   text-decoration-line: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 5px;
+}
+
+/* Respect reduced motion for decorative effects; retain colours and focus rings. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+
+  .contact-btn:hover,
+  #car-filters > button:hover,
+  .brand:hover,
+  .brand img:hover,
+  .back-home-btn:hover,
+  .submit-btn:hover,
+  .submit-btn:focus-visible {
+    transform: none;
+  }
 }
