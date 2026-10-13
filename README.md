@@ -1,10 +1,19 @@
 <h1 align="center">Wheels on Fire</h1>
-<p align="center">A car collection and community website by the RDE Team.</p>
+
+<p align="center">
+  A car collection and community website by the RDE Team.
+</p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&amp;logo=html5&amp;logoColor=white" alt="HTML5">
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat" alt="CSS3">
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&amp;logo=javascript&amp;logoColor=black" alt="JavaScript">
+</p>
+
+<p align="center">
+  <a href="https://askada21.github.io/WebDev_Project_RDE/">
+    🌐 Live Demo
+  </a>
 </p>
 
 ## Overview
