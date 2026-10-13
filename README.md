@@ -29,14 +29,14 @@ Wheels on Fire is a responsive, multi-page website showcasing John O’Reilly’
 
 <img src="screenshots/home-mobile.png" alt="Wheels on Fire mobile view" width="300">
 
+### Explore the Pages
+
 | Page | What to explore | Source |
 | --- | --- | --- |
 | Home | Video introduction, brand gallery, and car filters | [index.html](index.html) |
 | About | Collector biography and short-page footer layout | [about.html](pages/about.html) |
 | Contact | Form fields and validation feedback | [contact.html](pages/contact.html) |
 | Offers | Archived event details and closed offer | [offers.html](pages/offers.html) |
-
-*Planned screenshots: desktop collection, mobile filters, About footer, contact validation, and the event archive. No placeholder image files are linked.*
 
 ## Tech stack
 
@@ -46,7 +46,6 @@ Wheels on Fire is a responsive, multi-page website showcasing John O’Reilly’
 | CSS | Shared styling, Grid and Flexbox layouts, media queries, and focus states |
 | Vanilla JavaScript | DOM-based car filtering and client-side form validation |
 | Local media | JPEG photographs, PNG/SVG logos, an SVG favicon, and MP4 video |
-| Git | Version history and team collaboration |
 
 The site has no framework, package dependencies, build step, backend, or database. Python is optional tooling for the local server described below; it is not part of the website runtime.
 
@@ -63,10 +62,9 @@ WebDev_Project_RDE/
 ├── css/style.css        # Shared and responsive styles
 ├── script/main.js       # Filters and contact validation
 ├── media/               # Photos, logos, favicon, and hero video
+├── screenshots/         # Desktop and mobile page previews
 └── README.md
 ```
-
-Four supporting Word documents also sit at the repository root; they are omitted from this website-focused tree. Some SVG assets in `media/` are retained but unused by the current pages.
 
 ## Getting started
 
@@ -88,59 +86,36 @@ To explore the implementation, start with [index.html](index.html), [the shared 
 
 ## Responsive design and accessibility
 
-- **Responsive layouts:** Media queries adapt navigation, filters, grids, typography, and contact-form dimensions for narrow, tablet, and desktop viewports.
-- **Footer placement:** A column Flexbox page layout uses `100vh` as a fallback for `100dvh`, with a flexible main element. Footers stay in normal document flow rather than overlaying content.
-- **Keyboard navigation:** Each main page has a visible-on-focus skip link, a focusable main landmark, and explicit focus indicators. Scroll spacing helps keep focused content clear of the sticky header, which becomes static on narrow or short viewports.
-- **Page orientation:** Descriptive titles, labelled navigation landmarks, and `aria-current="page"` identify the current page.
-- **Form feedback:** Labels are associated with controls; error descriptions, `aria-invalid`, and polite status announcements communicate validation results. Invalid submissions focus the first field requiring attention.
-- **Control contrast:** Select, input, and textarea borders use `#767676`, providing approximately **4.54:1** contrast against white.
-- **Media handling:** Collection and logo images have alternative text, explicit dimensions, and native lazy loading.
-- **Reduced motion:** Decorative transitions and transforms are reduced, and search results scroll immediately when reduced motion is requested. The hero video is an exception, noted below.
-- **JavaScript fallback:** The full collection remains visible without JavaScript. Filtering and the contact check button remain disabled, with explanatory messages.
+- **Responsive layout:** Media queries adapt navigation, grids, filters, and forms. A Flexbox page layout keeps short-page footers at the viewport bottom without overlapping content.
+- **Keyboard access:** Skip links, focusable main landmarks, visible focus rings, and scroll spacing keep navigation and controls accessible around the responsive header.
+- **Page structure:** Descriptive titles, labelled navigation landmarks, and current-page indicators help users orient themselves.
+- **Form feedback:** Associated labels, field-level errors, `aria-invalid`, polite status announcements, and focus on the first invalid field support validation. Control borders provide approximately **4.54:1** contrast against white.
+- **Images and motion:** Collection and logo images include alternative text, explicit dimensions, and lazy loading. Reduced-motion settings suppress decorative effects and smooth search scrolling; the hero video remains an exception.
+- **Without JavaScript:** The full collection stays visible; filtering and contact validation are disabled with explanatory messages.
 
-These are implemented improvements, not a claim of complete accessibility conformance.
+These improvements do not constitute a full accessibility conformance audit.
 
 ## Testing and QA
 
-Development regression checks covered the Home, About, Contact, and Offers pages in desktop Chrome at **375px, 768px, and 1440px** viewport widths. Checks included responsive layout, footer placement, filtering, form validation, keyboard focus, asset loading, and the legacy Offers redirect. These viewport checks do not establish support across all browsers or physical devices.
+Development regression checks passed for all four pages in desktop Chrome at **375px, 768px, and 1440px** viewport widths.
 
-The repository does not include an automated test runner or committed QA scripts. To repeat the main checks, serve the site locally and use browser developer tools to test each width:
-
-| Area | Checks and expected results |
+| Area | Verified behavior |
 | --- | --- |
-| Layout | No horizontal overflow or clipped content. The footer ends at the document bottom, reaches the viewport bottom on short pages, and does not overlap content. |
-| Navigation | Main navigation, Back to Home, the collection anchor, and the legacy Offers redirect reach their intended destinations. |
-| Filters | Kia → Sportage returns one car; a price range of €0–€20,000 returns no cars; Reset restores all three cards. Changing make clears an incompatible model selection. |
-| Contact form | Empty and whitespace-only fields show errors. An invalid email is rejected. Valid details produce a message explicitly stating that nothing was sent or saved. |
-| Keyboard | Tab reveals the skip link and visible focus indicators. Enter activates the skip link; focused controls remain visible. |
-| Motion and fallback | Reduced-motion settings remove decorative transitions and smooth search scrolling. With JavaScript disabled, the full collection and explanatory messages remain available. |
-| Assets and console | Images, styles, scripts, favicon, and video load without missing-resource errors or JavaScript exceptions. |
+| Layout | No horizontal overflow or clipping; footers reach the bottom on short pages and remain below content on longer pages. |
+| Navigation and keyboard | Page links, collection anchor, legacy Offers redirect, skip links, and visible, unobscured keyboard focus work as intended. |
+| Filters | Make/model/price combinations, empty results, incompatible-model clearing, and reset to all three cars work correctly. |
+| Contact form | Empty fields, whitespace, and invalid email are rejected; valid details display the explicit no-delivery message. |
+| Media and fallbacks | Assets load, visible video loops, reduced-motion effects and JavaScript-disabled fallbacks work; no JavaScript exceptions or HTTP failures were recorded. |
 
-Before submitting changes, check for whitespace errors:
-
-```sh
-git diff --check
-```
+These checks cover browser viewport sizes, not every browser, physical device, or assistive technology. No automated test runner or QA scripts are committed. To repeat the checks, serve the site locally, test the widths above in developer tools, and run `git diff --check` before submitting changes.
 
 ## Team collaboration and contributions
 
-The website identifies its creators as the **RDE Team**. The Git history records contributions from multiple authors and provides attribution for individual changes; this README does not assign unverified roles or responsibilities.
-
-When contributing, keep changes focused, reuse the shared stylesheet and script where appropriate, and check all four pages at the documented viewport widths. Include the purpose of the change and relevant validation results in the team's review process.
-
-To inspect contributions locally:
-
-```sh
-git shortlog -sn HEAD
-git log --oneline
-```
+Created by the **RDE Team**, with individual contributions recorded in Git history. Keep contributions focused, reuse shared styles and scripts, and include validation results for all four pages in the team's review process.
 
 ## Known limitations
 
-- **The contact form is a demo.** It validates details in the browser only. There is no delivery service or application storage, and no message is sent or saved by the site.
-- **The collection is static.** Filtering uses the three cards and their `data-*` attributes in `index.html`; there is no inventory API or database.
-- **Location filtering is unavailable.** The location control is intentionally disabled and accompanied by an explanation.
-- **Events and offers are archived.** Ticket purchases and calendar downloads are unavailable for the past event.
-- **Social names are placeholders.** Footer social items are text, not working profile links.
-- **The hero video autoplays and loops without a pause control.** It continues playing under reduced-motion preferences.
-- **Browser coverage is limited.** The documented Chrome checks are not a full cross-browser, assistive-technology, or accessibility audit.
+- **Demo contact form:** Browser-only validation; no message delivery or application storage.
+- **Static collection:** Three hardcoded cars, no inventory API or database, and no location filtering.
+- **Unavailable actions:** Event tickets and calendar downloads are closed; footer social names are non-interactive placeholders.
+- **Autoplay video:** The hero video loops without a pause control and continues playing under reduced-motion preferences.
